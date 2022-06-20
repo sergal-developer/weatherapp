@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { tomorrowIOService } from '../services/tomorrow.io.services';
 
 @Component({
   selector: 'app-root',
@@ -9,21 +10,28 @@ export class AppComponent implements OnInit {
   current = {
     status: 'day',
     date: new Date(),
-    time: new Date().getTime()
+    time: new Date().getTime(),
+    location: {
+      latitude: null,
+      longitude: null
+    }
   }
 
-  constructor() {}
+  constructor(private service: tomorrowIOService) {}
 
   ngOnInit(): void {
     
     this.current.date = new Date();
 
     const hour = new Date().getHours();
-    this.current.status = hour > 6 && hour < 15 ? 'day' :
-                          hour > 16 && hour < 18 ? 'sunset' :
-                          hour > 19 && hour < 23 ? 'night' :
+    this.current.status = hour > 6 && hour <= 16 ? 'day' :
+                          hour > 16 && hour <= 19 ? 'sunset' :
+                          hour > 19 && hour <= 23 ? 'night' :
                           hour >= 0 && hour < 6 ? 'morning' : '';
 
+    console.log('this.current.status: ', this.current);
+
+    this.getLocation();
   }
 
   updateStatus() {
@@ -37,18 +45,19 @@ export class AppComponent implements OnInit {
   getLocation() {
     let x = document.getElementById("demo");
     if (navigator.geolocation) {
-        navigator.geolocation.getCurrentPosition(this.showPosition, this.showError);
+        navigator.geolocation.getCurrentPosition((position) => {
+          let lat=position.coords.latitude;
+          let lon=position.coords.longitude;
+
+          console.log('position.coords', position.coords);
+          this.current.location = { latitude: lat, longitude: lon };
+          this.service.getTimelines({ latitude: lat, longitude: lon }, (data) => {})
+          
+        }, this.showError);
       }
       else{
           x.innerHTML="Geolocation is not supported by this browser.";
       }
-  }
-
-  showPosition(position){
-      let lat=position.coords.latitude;
-      let lon=position.coords.longitude;
-      console.log('lat', lat);
-      console.log('lat', lon);
   }
 
   showError(error){

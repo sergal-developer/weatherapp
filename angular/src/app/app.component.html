@@ -1,5 +1,8 @@
 <div class="main-container {{ current.status }}">
   <div class="weather-status">
+
+    <div class="background">
+    </div>
     <div class="header">
       <div class="location">
         <img src="../assets/svg/location-dot-solid.svg" alt="">
@@ -7,13 +10,13 @@
       </div>
 
       <div class="menu">
-        <div class="bars"></div>
+        <div class="bars">bars</div>
       </div>
     </div>
 
-    <div class="content">
+    <div class="stadistics">
       <div class="temperature">23°</div>
-      <div class="day-status">Noche</div>
+      <div class="day-status">{{ current.status }}</div>
     </div>
   </div>
 
@@ -22,7 +25,26 @@
       Weather Today
     </div>
     <div class="weather-by-day">
-
+      <div class="weather-item">
+        <div class="w-icon">Icon</div>
+        <div class="w-hour">5:00 AM</div>
+        <div class="w-temperature">23°</div>
+      </div>
+      <div class="weather-item">
+        <div class="w-icon">Icon</div>
+        <div class="w-hour">5:00 AM</div>
+        <div class="w-temperature">23°</div>
+      </div>
+      <div class="weather-item">
+        <div class="w-icon">Icon</div>
+        <div class="w-hour">5:00 AM</div>
+        <div class="w-temperature">23°</div>
+      </div>
+      <div class="weather-item">
+        <div class="w-icon">Icon</div>
+        <div class="w-hour">5:00 AM</div>
+        <div class="w-temperature">23°</div>
+      </div>
     </div>
   </div>
 

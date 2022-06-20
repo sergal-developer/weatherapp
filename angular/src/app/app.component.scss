@@ -1,17 +1,112 @@
 
+$padding: 20px;
+
 .main-container {
     width: 100vw;
     height: 100vh;
 
+    max-width: calc(100vw);
+    max-height: calc(100vh);
+
+    box-sizing: border-box;
     background: black;
-    padding: 20px;
+    padding: $padding;
 
     transition: background 300ms ease-in-out;
+
+    display: flex;
+    flex-direction: column;
 
     &.day { background: #A5DAF1; }
     &.sunset { background: #B25837; }
     &.night { background: #5E5CE3; }
-    &.morning { background: #1B1A69; }
+    &.morning { background: #1B1A69; color: white; }
+}
+
+.weather-status {
+    .background {
+        position: absolute;
+
+    }
+    .header {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+
+        .location {
+            height: 60px;
+            display: flex;
+            align-items: center;
+
+            img {
+                height: inherit;
+                width: 25px;
+                padding-right: 10px;
+            }
+        }
+        .menu {
+            .bars {}
+        }
+    }
+
+
+    .stadistics {
+        display: flex;
+        flex-direction: row;
+        font-size: 2em;
+        align-items: center;
+        justify-content: space-between;
+
+        .temperature { font-size: 5em; }
+        .day-status {
+            transform: rotate(90deg);
+            width: 150px;
+            height: 40px;
+            right: -40px;
+            position: absolute;
+            text-align: center;
+        }
+    }
+
+}
+
+.weather-details {
+    width: calc(100%);
+    background: white;
+    color: black;
+    margin: -20px;
+    padding: 20px;
+    position: absolute;
+    bottom: 20px;
+    left: 20px;
+    text-align: center;
+    border-radius: 20px;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+
+    .title {
+        margin: 0px auto 30px;
+        font-size: 1.2em;
+    }
+    .weather-by-day {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        .weather-item {
+            .w-icon {
+                width: 40px;
+                height: 40px;
+                margin: 0 auto;
+            }
+            .w-hour {
+                font-size: 0.8em;
+            }
+            .w-temperature {
+                font-size: 2em;
+            }
+        }
+    }
 }
 
 
@@ -24,6 +119,11 @@ h1{
 .container{
     margin: 0 auto;
 }
+
+
+
+
+
 
 .weather-sun,.weather-cloud,.weather-snow,.weather-cloudAndSun,.weather-rain{
     width: 200px;
