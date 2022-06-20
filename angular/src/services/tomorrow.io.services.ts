@@ -3,8 +3,8 @@ import { Injectable } from '@angular/core';
 @Injectable()
 export class tomorrowIOService {
 
-    // apikey = 'mCl9Ek0nwX5MtSFtEF0SBEOREKjIr9vo';
-    apikey = '6b201e62215256169501e0cbd11613e3';
+    // apikey = 'API-KEY';
+    apikey = 'API-KEY';
     constructor() {
     }
 
